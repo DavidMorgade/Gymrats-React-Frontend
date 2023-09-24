@@ -1,16 +1,17 @@
 import styled from 'styled-components';
 import FormGroup from './FormGroup';
-import LoginHeading from '../GlobalText/LoginHeading';
+import LoginHeading from './LoginHeading';
+import LoginBtn from './LoginBtn';
 
 const StyledSection = styled.section`
   gap: 2rem;
-  padding: 0 4rem;
+  padding: 0 2rem;
   background-color: var(--backgroundPage);
   height: 100vh;
 `;
 const HeadingContainer = styled.div`
   text-align: center;
-  margin: 5rem 0;
+  margin: 2rem 0;
 `;
 const Heading = styled.h1`
   font-size: 2rem;
@@ -33,23 +34,24 @@ const LoginForm = () => {
   return (
     <StyledSection>
       <LoginHeading />
-      <HeadingContainer>
-        <Heading>Login</Heading>
-        <SubHeading>Enter your account details</SubHeading>
-      </HeadingContainer>
       <StyledForm>
+        <HeadingContainer>
+          <Heading>Login</Heading>
+          <SubHeading>Enter your account details</SubHeading>
+        </HeadingContainer>
         <FormGroup
           required={true}
           id={'username'}
           type={'text'}
-          formName={'Username:'}
+          formName={'Username'}
         />
         <FormGroup
           required={true}
           id={'password'}
           type={'password'}
-          formName={'Password:'}
+          formName={'Password'}
         />
+        <LoginBtn />
       </StyledForm>
     </StyledSection>
   );
