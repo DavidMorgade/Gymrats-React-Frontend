@@ -6,7 +6,6 @@ const FooterContainer = styled.footer`
   margin-top: 2rem;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
 `;
 
@@ -15,9 +14,10 @@ const FooterText = styled.p`
 `;
 const StyledAnchor = styled(Link)`
   all: unset;
-  display: inline-block;
-  min-width: 100%;
-  min-height: 100%;
+  width: 100%;
+  height: inherit;
+  flex: 1;
+  line-height: 2rem;
 `;
 
 const LoginFooter = () => {

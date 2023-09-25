@@ -5,6 +5,10 @@ const StyledBtn = styled.button`
   min-width: 15rem;
   min-height: 2rem;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   background-color: var(--loginBtnBg);
   margin-top: 2rem;
   border-radius: 12px;
