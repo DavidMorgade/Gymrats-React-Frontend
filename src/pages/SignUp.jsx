@@ -17,6 +17,9 @@ const StyledImg = styled.img`
   object-fit: cover;
   position: absolute;
   z-index: -1;
+  @media (min-width: 1440px) {
+    position: static;
+  }
 `;
 
 const SignUp = () => {

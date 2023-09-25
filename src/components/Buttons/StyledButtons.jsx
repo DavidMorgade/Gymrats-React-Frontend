@@ -24,6 +24,14 @@ const StyledBtn = styled.button`
   &:active {
     transform: scale(0.95);
   }
+  @media (min-width: 768px) {
+    grid-column: 1 / 3;
+  }
+  @media (min-width: 1440px) {
+    min-width: 15rem;
+    min-height: 2.5rem;
+    font-size: 1.2rem;
+  }
 `;
 
 export { StyledBtn };

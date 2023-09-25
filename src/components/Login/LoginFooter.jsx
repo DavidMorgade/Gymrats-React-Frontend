@@ -18,6 +18,9 @@ const StyledAnchor = styled(Link)`
   height: inherit;
   flex: 1;
   line-height: 2rem;
+  @media (min-width: 1440px) {
+    line-height: 2.4rem;
+  }
 `;
 
 const LoginFooter = () => {

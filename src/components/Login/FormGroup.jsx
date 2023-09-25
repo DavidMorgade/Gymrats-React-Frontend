@@ -18,6 +18,9 @@ const StyledContainer = styled.div`
     color: var(--formFields);
     opacity: 0.4;
     width: 100%;
+    @media (min-width: 1440px) {
+      font-size: 1.5rem;
+    }
   }
   input {
     all: unset;
@@ -27,6 +30,12 @@ const StyledContainer = styled.div`
     border-bottom: 2px solid gray;
     width: 100%;
     color: var(--formFields);
+    @media (min-width: 1440px) {
+      font-size: 1.5rem;
+    }
+  }
+  @media (min-width: 768px) {
+    grid-column: 1 / 3;
   }
 `;
 

@@ -14,26 +14,53 @@ const StyledSection = styled.section`
   padding: 0 2rem;
   background-color: var(--backgroundPage);
   height: 100vh;
+  @media (min-width: 1440px) {
+    background-color: #1c1d21;
+  }
 `;
 const HeadingContainer = styled.div`
   text-align: center;
   margin: 2rem 0;
+  @media (min-width: 768px) {
+    grid-column: 1 / 3;
+    grid-row: 1 / 3;
+  }
+  @media (min-width: 1440px) {
+    text-align: left;
+  }
 `;
 const Heading = styled.h1`
   font-size: 2rem;
   margin: 0;
   line-height: 1.5;
   color: var(--white);
+  @media (min-width: 768px) {
+    font-size: 2.6rem;
+  }
+  @media (min-width: 1440px) {
+    font-size: 3rem;
+  }
 `;
 const SubHeading = styled.p`
   margin: 0;
   color: var(--formFields);
+  @media (min-width: 768px) {
+    font-size: 1.2rem;
+  }
+  @media (min-width: 1440px) {
+    font-size: 1.3rem;
+  }
 `;
 const StyledForm = styled.form`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  @media (min-width: 768px) {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+  }
 `;
 
 const LoginForm = () => {
@@ -60,16 +87,20 @@ const LoginForm = () => {
           formName={'Password'}
         />
         {pathname === '/signup' && (
-          <>
-            <FormGroup
-              required={true}
-              id={'email'}
-              type={'email'}
-              formName={'Email'}
-            />
-            <GoogleButton type="dark" />
-          </>
+          <FormGroup
+            required={true}
+            id={'email'}
+            type={'email'}
+            formName={'Email'}
+          />
         )}
+        <GoogleButton
+          className="googleBtn"
+          type="dark"
+          label={
+            pathname === '/login' ? 'Login with Google' : 'Sign Up with Google'
+          }
+        />
         <LoginBtn />
       </StyledForm>
       <LoginFooter />
