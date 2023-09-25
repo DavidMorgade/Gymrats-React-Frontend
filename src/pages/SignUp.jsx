@@ -6,6 +6,11 @@ import LoginForm from '../components/Login/LoginForm';
 const StyledMain = styled.main`
   display: flex;
   flex-direction: column-reverse;
+  @media (min-width: 1440px) {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 1;
+  }
 `;
 
 const StyledImg = styled.img`

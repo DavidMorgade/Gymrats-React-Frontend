@@ -16,6 +16,7 @@ const StyledSection = styled.section`
   height: 100vh;
   @media (min-width: 1440px) {
     background-color: #1c1d21;
+    padding: 0 5rem;
   }
 `;
 const HeadingContainer = styled.div`
