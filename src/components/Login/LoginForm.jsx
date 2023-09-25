@@ -2,6 +2,8 @@ import styled from 'styled-components';
 import FormGroup from './FormGroup';
 import LoginHeading from './LoginHeading';
 import LoginBtn from './LoginBtn';
+import LoginFooter from './LoginFooter';
+import { useLocation } from 'react-router-dom';
 
 const StyledSection = styled.section`
   gap: 2rem;
@@ -31,12 +33,14 @@ const StyledForm = styled.form`
 `;
 
 const LoginForm = () => {
+  const { pathname } = useLocation();
+
   return (
     <StyledSection>
       <LoginHeading />
       <StyledForm>
         <HeadingContainer>
-          <Heading>Login</Heading>
+          <Heading>{pathname === '/login' ? 'Login' : 'Sign Up'}</Heading>
           <SubHeading>Enter your account details</SubHeading>
         </HeadingContainer>
         <FormGroup
@@ -51,8 +55,17 @@ const LoginForm = () => {
           type={'password'}
           formName={'Password'}
         />
+        {pathname === '/signup' && (
+          <FormGroup
+            required={true}
+            id={'email'}
+            type={'email'}
+            formName={'Email'}
+          />
+        )}
         <LoginBtn />
       </StyledForm>
+      <LoginFooter />
     </StyledSection>
   );
 };

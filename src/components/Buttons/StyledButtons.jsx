@@ -2,9 +2,11 @@ import styled from 'styled-components';
 
 const StyledBtn = styled.button`
   all: unset;
-  padding: 0.5rem 7rem;
+  min-width: 15rem;
+  min-height: 2rem;
+  text-align: center;
   background-color: var(--loginBtnBg);
-  margin-top: 5rem;
+  margin-top: 2rem;
   border-radius: 12px;
   color: var(--white);
   font-weight: 300;
@@ -14,6 +16,9 @@ const StyledBtn = styled.button`
   &:hover {
     background-color: white;
     color: var(--loginBtnBg);
+  }
+  &:active {
+    transform: scale(0.95);
   }
 `;
 

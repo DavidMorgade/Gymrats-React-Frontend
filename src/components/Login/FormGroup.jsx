@@ -10,9 +10,9 @@ const StyledContainer = styled.div`
   gap: 1rem;
   margin-top: 1rem;
   width: 80%;
+  margin-bottom: 1rem;
   label {
     position: absolute;
-
     z-index: 0;
     pointer-events: none;
     color: var(--formFields);
