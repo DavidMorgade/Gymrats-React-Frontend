@@ -8,6 +8,8 @@ import LoginFooter from './LoginFooter';
 import GoogleButton from 'react-google-button';
 // hooks
 import { useLocation } from 'react-router-dom';
+// login functions
+import { userLogin } from '../../helpers/UserLogin';
 
 const StyledSection = styled.section`
   gap: 2rem;
@@ -67,19 +69,24 @@ const StyledForm = styled.form`
 const LoginForm = () => {
   const { pathname } = useLocation();
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    userLogin(e.target.email.value, e.target.password.value);
+  };
+
   return (
     <StyledSection>
       <LoginHeading />
-      <StyledForm>
+      <StyledForm onSubmit={handleSubmit}>
         <HeadingContainer>
           <Heading>{pathname === '/login' ? 'Login' : 'Sign Up'}</Heading>
           <SubHeading>Enter your account details</SubHeading>
         </HeadingContainer>
         <FormGroup
           required={true}
-          id={'username'}
-          type={'text'}
-          formName={'Username'}
+          id={'email'}
+          type={'email'}
+          formName={'Email'}
         />
         <FormGroup
           required={true}
@@ -90,9 +97,9 @@ const LoginForm = () => {
         {pathname === '/signup' && (
           <FormGroup
             required={true}
-            id={'email'}
-            type={'email'}
-            formName={'Email'}
+            id={'username'}
+            type={'username'}
+            formName={'Username'}
           />
         )}
         <GoogleButton
