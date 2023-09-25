@@ -2,7 +2,7 @@ import { StyledWelcome, StyledLoginApp } from '../GlobalText/StyledTexts';
 import styled from 'styled-components';
 
 const StyledDiv = styled.div`
-  margin: 5rem 0;
+  margin: 2rem 0;
   text-align: center;
 `;
 

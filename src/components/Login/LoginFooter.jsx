@@ -3,7 +3,7 @@ import { StyledBtn } from '../Buttons/StyledButtons';
 import { Link, useLocation } from 'react-router-dom';
 
 const FooterContainer = styled.footer`
-  margin-top: 5rem;
+  margin-top: 2rem;
   display: flex;
   flex-direction: column;
   justify-content: center;

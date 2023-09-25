@@ -1,8 +1,12 @@
 import styled from 'styled-components';
+// components
 import FormGroup from './FormGroup';
 import LoginHeading from './LoginHeading';
 import LoginBtn from './LoginBtn';
 import LoginFooter from './LoginFooter';
+//google button
+import GoogleButton from 'react-google-button';
+// hooks
 import { useLocation } from 'react-router-dom';
 
 const StyledSection = styled.section`
@@ -56,12 +60,15 @@ const LoginForm = () => {
           formName={'Password'}
         />
         {pathname === '/signup' && (
-          <FormGroup
-            required={true}
-            id={'email'}
-            type={'email'}
-            formName={'Email'}
-          />
+          <>
+            <FormGroup
+              required={true}
+              id={'email'}
+              type={'email'}
+              formName={'Email'}
+            />
+            <GoogleButton type="dark" />
+          </>
         )}
         <LoginBtn />
       </StyledForm>
