@@ -12,7 +12,13 @@ const userLogin = async (email, password) => {
 
       return response.json();
     })
-    .then((data) => console.log(data));
+    .then((data) => {
+      localStorage.setItem('name', data.user.name);
+      localStorage.setItem('email', data.user.email);
+      localStorage.setItem('x-token', data.token);
+
+      console.log(data);
+    });
 };
 
 export { userLogin };

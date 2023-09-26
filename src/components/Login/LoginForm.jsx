@@ -7,7 +7,7 @@ import LoginFooter from './LoginFooter';
 //google button
 import GoogleButton from 'react-google-button';
 // hooks
-import { useLocation } from 'react-router-dom';
+import { redirect, useLocation } from 'react-router-dom';
 // login functions
 import { userLogin } from '../../helpers/UserLogin';
 import { useUserContext } from '../../context/Users/useUserContext';
@@ -69,13 +69,17 @@ const StyledForm = styled.form`
 
 const LoginForm = () => {
   const { pathname } = useLocation();
-  const [user, setUser] = useUserContext();
+  const [, setUser] = useUserContext();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    //TODOOOO
-    setUser();
     userLogin(e.target.email.value, e.target.password.value);
+    setUser({
+      name: localStorage.getItem('name'),
+      email: localStorage.getItem('email'),
+      token: localStorage.getItem('x-token'),
+    });
+    return redirect('/');
   };
 
   return (
