@@ -3,7 +3,11 @@ import { createContext, useContext, useState } from 'react';
 const UserContext = createContext();
 
 export function UserWrapper({ children }) {
-  const [user, setUser] = useState('en');
+  const [user, setUser] = useState({
+    name: '',
+    email: '',
+    token: '',
+  });
   return (
     <UserContext.Provider value={[user, setUser]}>
       {children}

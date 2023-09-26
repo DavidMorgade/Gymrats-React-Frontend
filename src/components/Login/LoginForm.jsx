@@ -10,6 +10,7 @@ import GoogleButton from 'react-google-button';
 import { useLocation } from 'react-router-dom';
 // login functions
 import { userLogin } from '../../helpers/UserLogin';
+import { useUserContext } from '../../context/Users/useUserContext';
 
 const StyledSection = styled.section`
   gap: 2rem;
@@ -68,9 +69,12 @@ const StyledForm = styled.form`
 
 const LoginForm = () => {
   const { pathname } = useLocation();
+  const [user, setUser] = useUserContext();
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    //TODOOOO
+    setUser();
     userLogin(e.target.email.value, e.target.password.value);
   };
 

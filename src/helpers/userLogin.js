@@ -1,5 +1,3 @@
-import { useEffect } from 'react';
-
 const userLogin = async (email, password) => {
   const requestOptions = {
     method: 'POST',
@@ -11,7 +9,7 @@ const userLogin = async (email, password) => {
       if (!response.ok) {
         return response.json();
       }
-      useEffect();
+
       return response.json();
     })
     .then((data) => console.log(data));
