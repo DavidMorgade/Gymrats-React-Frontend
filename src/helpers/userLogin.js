@@ -5,19 +5,19 @@ const userLogin = async (email, password) => {
     body: JSON.stringify({ email, password }),
   };
   await fetch('http://localhost:8080/api/auth/login/', requestOptions)
-    .then((response) => {
-      if (!response.ok) {
-        return response.json();
-      }
-
-      return response.json();
-    })
+    .then((response) => response.json())
     .then((data) => {
-      localStorage.setItem('name', data.user.name);
-      localStorage.setItem('email', data.user.email);
-      localStorage.setItem('x-token', data.token);
-
-      console.log(data);
+      if (data.user) {
+        localStorage.setItem('name', data.user.name);
+        localStorage.setItem('email', data.user.email);
+        localStorage.setItem('x-token', data.token);
+        localStorage.setItem('auth', true);
+      } else {
+        localStorage.setItem('name', '');
+        localStorage.setItem('email', '');
+        localStorage.setItem('x-token', '');
+        localStorage.setItem('auth', false);
+      }
     });
 };
 

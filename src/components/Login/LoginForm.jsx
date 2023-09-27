@@ -7,10 +7,12 @@ import LoginFooter from './LoginFooter';
 //google button
 import GoogleButton from 'react-google-button';
 // hooks
-import { redirect, useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
+
 // login functions
 import { userLogin } from '../../helpers/UserLogin';
 import { useUserContext } from '../../context/Users/useUserContext';
+import { useEffect } from 'react';
 
 const StyledSection = styled.section`
   gap: 2rem;
@@ -69,7 +71,7 @@ const StyledForm = styled.form`
 
 const LoginForm = () => {
   const { pathname } = useLocation();
-  const [, setUser] = useUserContext();
+  const [user, setUser] = useUserContext();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -78,10 +80,18 @@ const LoginForm = () => {
       name: localStorage.getItem('name'),
       email: localStorage.getItem('email'),
       token: localStorage.getItem('x-token'),
+      auth: localStorage.getItem('auth'),
     });
-    return redirect('/');
   };
-
+  // dunno why i did this on this component but its the only way it works to force users to / when logged in, CHANGES TODO in this ugly code:
+  const auth = user.name !== '' || user.email !== '' || user.token !== '';
+  let navigate = useNavigate();
+  useEffect(() => {
+    if (auth) {
+      return navigate('/');
+    }
+  }, [auth, navigate]);
+  console.log(user);
   return (
     <StyledSection>
       <LoginHeading />

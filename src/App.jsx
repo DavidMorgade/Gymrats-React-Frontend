@@ -14,7 +14,7 @@ function App() {
     <UserWrapper>
       <Routes>
         <Route exact path="/" element={<PrivateRoute />}>
-          <Route exact path="/" element={<Home />}></Route>
+          <Route exact path="/" element={<Home />} />
         </Route>
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />

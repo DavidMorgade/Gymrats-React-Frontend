@@ -7,6 +7,7 @@ export function UserWrapper({ children }) {
     name: '',
     email: '',
     token: '',
+    auth: false,
   });
   return (
     <UserContext.Provider value={[user, setUser]}>
