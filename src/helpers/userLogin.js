@@ -12,6 +12,7 @@ const userLogin = async (email, password) => {
         localStorage.setItem('email', data.user.email);
         localStorage.setItem('x-token', data.token);
         localStorage.setItem('auth', true);
+        console.log(data);
       } else {
         localStorage.setItem('name', '');
         localStorage.setItem('email', '');

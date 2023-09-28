@@ -76,21 +76,21 @@ const LoginForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     userLogin(e.target.email.value, e.target.password.value);
+  };
+  // dunno why i did this on this component but its the only way it works to force users to / when logged in, CHANGES TODO in this ugly code:
+  const auth = user.name !== '' || user.email !== '' || user.token !== '';
+  let navigate = useNavigate();
+  useEffect(() => {
     setUser({
       name: localStorage.getItem('name'),
       email: localStorage.getItem('email'),
       token: localStorage.getItem('x-token'),
       auth: localStorage.getItem('auth'),
     });
-  };
-  // dunno why i did this on this component but its the only way it works to force users to / when logged in, CHANGES TODO in this ugly code:
-  const auth = user.name !== '' || user.email !== '' || user.token !== '';
-  let navigate = useNavigate();
-  useEffect(() => {
     if (auth) {
       return navigate('/');
     }
-  }, [auth, navigate]);
+  }, [auth, navigate, setUser]);
   console.log(user);
   return (
     <StyledSection>
