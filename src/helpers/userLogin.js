@@ -18,6 +18,7 @@ const userLogin = async (email, password) => {
         localStorage.setItem('email', '');
         localStorage.setItem('x-token', '');
         localStorage.setItem('auth', false);
+        console.log('hola');
       }
     });
 };

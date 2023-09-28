@@ -12,7 +12,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 // login functions
 import { userLogin } from '../../helpers/UserLogin';
 import { useUserContext } from '../../context/Users/useUserContext';
-import { useEffect } from 'react';
+import { useState } from 'react';
 
 const StyledSection = styled.section`
   gap: 2rem;
@@ -71,30 +71,36 @@ const StyledForm = styled.form`
 
 const LoginForm = () => {
   const { pathname } = useLocation();
+  const [error, setError] = useState(false);
   const [user, setUser] = useUserContext();
-
+  let navigate = useNavigate();
   const handleSubmit = (e) => {
     e.preventDefault();
+
     userLogin(e.target.email.value, e.target.password.value);
-  };
-  // dunno why i did this on this component but its the only way it works to force users to / when logged in, CHANGES TODO in this ugly code:
-  const auth = user.name !== '' || user.email !== '' || user.token !== '';
-  let navigate = useNavigate();
-  useEffect(() => {
     setUser({
       name: localStorage.getItem('name'),
       email: localStorage.getItem('email'),
       token: localStorage.getItem('x-token'),
       auth: localStorage.getItem('auth'),
     });
-    if (auth) {
+    if (user.auth === 'true') {
+      setError(false);
+      console.log(user.auth);
       return navigate('/');
+    } else {
+      setError(true);
     }
-  }, [auth, navigate, setUser]);
+  };
+  // dunno why i did this on this component but its the only way it works to force users to / when logged in, CHANGES TODO in this ugly code:
+
   console.log(user);
   return (
     <StyledSection>
       <LoginHeading />
+      {error && (
+        <h1>Error en la autenticación, pruebe con otro email / contraseña</h1>
+      )}
       <StyledForm onSubmit={handleSubmit}>
         <HeadingContainer>
           <Heading>{pathname === '/login' ? 'Login' : 'Sign Up'}</Heading>
